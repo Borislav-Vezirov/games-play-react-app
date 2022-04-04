@@ -4,10 +4,10 @@ import Header from "./components/Header.js";
 import Home from "./components/Home.js";
 import Catalog from "./components/Catalog.js";
 import CreateGame from "./components/CreateGame.js";
-// import EditGame from "./components/EditGame.js";
-// import Details from "./components/Details.js";
-// import Login from "./components/Login.js";
-// import Register from "./components/Register.js";
+import EditGame from "./components/EditGame.js";
+import Details from "./components/Details.js";
+import Login from "./components/Login.js";
+import Register from "./components/Register.js";
 
 function App() {
 
@@ -18,6 +18,10 @@ function App() {
     '/'            : <Home />,
     '/catalog'     : <Catalog />,
     '/create-game' : <CreateGame />,
+    '/edit-game'   : <EditGame />,
+    '/details'     : <Details />,
+    '/login'       : <Login />,
+    '/register'    : <Register />,
 
   }
 
