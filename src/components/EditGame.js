@@ -1,5 +1,5 @@
 
-function Edit(){
+function EditGame(){
     return (
         <section id="edit-page" className="auth">
             <form id="edit">
@@ -28,4 +28,4 @@ function Edit(){
     )
 }
 
-export default Edit;
+export default EditGame;

@@ -1,5 +1,5 @@
 
-const Create = () => {
+const CreateGame = () => {
     return (
         <section id="create-page" className="auth">
             <form id="create">
@@ -27,4 +27,4 @@ const Create = () => {
     )
 }
 
-export default Create;
+export default CreateGame;
