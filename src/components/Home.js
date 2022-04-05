@@ -1,5 +1,23 @@
+import { useEffect, useState } from 'react';
+import * as GameService from '../services/gameService.js'
+import LatestGameCard from './LatestGameCard.js'
+
 
 const Home = () => {
+
+    const [games, setGames] = useState([]);
+    const [loading, setloading] = useState(false);
+
+    useEffect(() => {
+        setloading(true);
+        GameService.getLatestGames()
+            .then(result => {
+                setloading(false)
+                setGames(result);
+            });
+
+    }, []);
+
     return (
         <section id="welcome-world">
 
@@ -12,44 +30,13 @@ const Home = () => {
             <div id="home-page">
                 <h1>Latest Games</h1>
 
+                {loading 
+                ?  <h3 className="no-articles">Loading...</h3> 
+                :  games.length > 0 ? 
+                   games.map(x => <LatestGameCard  key={x._id} game={x} />) 
+                   : <h3 className="no-articles">No Games Yet</h3>
+            } 
                 
-                <div className="game">
-                    <div className="image-wrap">
-                        <img alt="" src="/images/CoverFire.png" />
-                    </div>
-                    <h3>Cover Fire</h3>
-                    <div className="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <div className="data-buttons">
-                        <a href="#" className="btn details-btn">Details</a>
-                    </div>
-                </div>
-                <div className="game">
-                    <div className="image-wrap">
-                        <img alt="" src="/images/ZombieLang.png" />
-                    </div>
-                    <h3>Zombie Lang</h3>
-                    <div className="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <div className="data-buttons">
-                        <a href="#" className="btn details-btn">Details</a>
-                    </div>
-                </div>
-                <div className="game">
-                    <div className="image-wrap">
-                        <img alt="" src="/images/MineCraft.png" />
-                    </div>
-                    <h3>MineCraft</h3>
-                    <div className="rating">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <div className="data-buttons">
-                        <a href="#" className="btn details-btn">Details</a>
-                    </div>
-                </div>
-                <p className="no-articles">No games yet</p>
             </div>
         </section>
     )
