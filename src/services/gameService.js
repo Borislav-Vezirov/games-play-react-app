@@ -12,3 +12,9 @@ export function getLatestGames(){
             .then(res => res.json());
 
 }
+
+export function getOne(id){
+
+    return fetch(`http://localhost:3030/data/games/${id}`)
+        .then(res => res.json());
+}
